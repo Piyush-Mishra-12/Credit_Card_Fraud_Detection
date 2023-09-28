@@ -31,21 +31,5 @@ jobs:
         # Build a docker container and
         # push it to ECR so that it can
         # be deployed to ECS.
-        docker build -t public.ecr.aws/j3b1b0a9/credit_card_fraud_detection:$IMAGE_TAG
+        docker build -t public.ecr.aws/j3b1b0a9/credit_card_fraud_detection:$IMAGE_TAG .
         docker push public.ecr.aws/j3b1b0a9/credit_card_fraud_detection:$IMAGE_TAG
-
-    - name: Fill in the new image ID in the Amazon ECS task definition
-      id: task-def
-      uses: aws-actions/amazon-ecs-render-task-definition@v1
-      with:
-        task-definition: path-to-your-task-definition.json
-        container-name: your-container-name
-        image: your-ecr-url/your-ecr-repo:$GITHUB_SHA
-
-    - name: Deploy Amazon ECS task definition
-      uses: aws-actions/amazon-ecs-deploy-task-definition@v1
-      with:
-        task-definition: ${{ steps.task-def.outputs.task-definition }}
-        service: your-ecs-service-name
-        cluster: your-ecs-cluster-name
-        wait-for-service-stability: true
