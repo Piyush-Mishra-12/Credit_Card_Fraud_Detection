@@ -1,6 +1,6 @@
 # Credit_Card_Fraud_Detection
 * The Dataset has:
-* #   Column                      Non-Null Count  Dtype
+*    Column                      Non-Null Count  Dtype
 * --  ------                      --------------  -----
 * 0   LIMIT_BAL                   1001 non-null   int64
 * 1   SEX                         1001 non-null   int64
