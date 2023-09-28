@@ -2,9 +2,9 @@
 The Dataset has:
  #   Column                      Non-Null Count  Dtype
 ---  ------                      --------------  -----
- 0   LIMIT_BAL                   1001 non-null   int64
- 1   SEX                         1001 non-null   int64
- 2   EDUCATION                   1001 non-null   int64
+* 0   LIMIT_BAL                   1001 non-null   int64
+* 1   SEX                         1001 non-null   int64
+* 2   EDUCATION                   1001 non-null   int64
  3   MARRIAGE                    1001 non-null   int64
  4   AGE                         1001 non-null   int64
  5   PAY_0                       1001 non-null   int64
