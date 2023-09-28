@@ -27,7 +27,7 @@ jobs:
 
     - name: Set Docker Image Tag
       id: set-image-tag
-      run: echo "::set-env name=IMAGE_TAG::$(date +'%Y%m%d%H%M%S')"
+      run: echo "IMAGE_TAG=$(date +'%Y%m%d%H%M%S')" >> $GITHUB_ENV
 
     - name: Build, tag, and push image to Amazon ECR
       id: build-image
