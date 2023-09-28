@@ -25,13 +25,15 @@ jobs:
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v1
 
+    - name: Set Docker Image Tag
+      id: set-image-tag
+      run: echo "::set-env name=IMAGE_TAG::$(date +'%Y%m%d%H%M%S')"
+
     - name: Build, tag, and push image to Amazon ECR
       id: build-image
       run: |
         # Build a docker container and
         # push it to ECR so that it can
         # be deployed to ECS.
-        docker build -t public.ecr.aws/j3b1b0a9/credit_card_fraud_detection:$IMAGE_TAG .
-        docker push public.ecr.aws/j3b1b0a9/credit_card_fraud_detection:$IMAGE_TAG
-      env:
-        IMAGE_TAG: ${{ github.sha }}
+        docker build -t public.ecr.aws/j3b1b0a9/credit_card_fraud_detection:${{ env.IMAGE_TAG }} .
+        docker push public.ecr.aws/j3b1b0a9/credit_card_fraud_detection:${{ env.IMAGE_TAG }}
